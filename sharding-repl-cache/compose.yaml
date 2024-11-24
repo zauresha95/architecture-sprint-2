@@ -28,7 +28,9 @@ services:
       MONGODB_URL: "mongodb://mongos_router:27020"
       MONGODB_DATABASE_NAME: "somedb"
       REDIS_URL: "redis://redis:6379"
-
+    networks:
+      app-network:
+        ipv4_address: 173.17.0.15
 
   configSrv:
     image: mongo:latest # docker образ
@@ -238,12 +240,12 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
-#      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
-   # command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
     networks:
       app-network:
-        ipv4_address: 173.17.0.15
-    command: ["redis-server", "--appendonly", "yes"]
+        ipv4_address: 173.17.0.2
+#    command: ["redis-server", "--appendonly", "yes"]
 
 
 

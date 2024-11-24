@@ -85,14 +85,3 @@ use somedb;
 db.helloDoc.countDocuments();
 EOF
 ```
-
-[//]: # (### Создание redis)
-
-[//]: # (```shell)
-
-[//]: # (docker compose exec -it redis redis-cli --cluster create  173.17.0.15:6379   --cluster-replicas 1)
-
-[//]: # (```)
-
-[//]: # ()
-
